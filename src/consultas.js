@@ -10,7 +10,7 @@ db.boxeador.find (
     }
 )
 /*Necesio buscar a todos los menores de 40 */
-db.inventory.find(
+db.boxeador.find(
         {edad: 
             {$eq: 40} 
         }
@@ -23,20 +23,20 @@ db.boxeador.find(
     } 
 )
 /*$lte selecciona los documentos donde el valor de field es menor o igual a el especificado*/
-db.inventory.find( 
+db.boxeador.find( 
     {combate: 
         {perdido:{$lte: 2} }
     } 
 )
 
 /*$gt selecciona aquellos documentos donde el valor de fieldes mayor que el especificado*/
-db.inventory.find( 
+db.boxeador.find( 
     {edad:
         {$gt: 60} 
     } 
 )
 /*$gte selecciona los documentos donde el valor de field es mayor o igual a un valor especificado*/
-db.inventory.find(
+db.boxeador.find(
     {combate: 
         {ganados: {$gte: 50}} 
     } 
@@ -82,14 +82,14 @@ db.boxeador.find(
     }
 )
 /*Este hace la misma función que un $and pero es implicito*/
-db.peliculas.find( 
+db.boxeador.find( 
     { debut: { $gte: new Date("2007-09-25") } }, 
     { $or: [ {peso: "76kg" }, {estatura: "173cm"}] }
 )
 
 
 /*$or te busca los campos que cumpla una de las condiciones*/
-db.inventory.find( 
+db.boxeador.find( 
     { 
         $or: [ 
             { "nombre": { $eq: "Rocky Marciano" } }, 
@@ -99,7 +99,7 @@ db.inventory.find(
 )
 
 /*$not realiza una NOT operación lógica en el especificado operador y selecciona los documentos que no coinciden con el segundo operador. Esto incluye documentos que no contienen el field.*/
-db.inventory.find( 
+db.boxeador.find( 
     {combates: 
        {perdidos: {$not: { $gt: 3 }} }
     } 
@@ -126,7 +126,7 @@ db.boxeador.find(
 
 /*Cuando <boolean> es verdadero, $exists coincide con los documentos que contienen el campo, incluidos los documentos en los que se encuentra el 
 valor del campo*/
-db.inventory.find( 
+db.boxeador.find( 
     {activo: {$exists: true}}, 
     {añoderetiro: {$gte: new Date("2017-8-26")}}
 )
@@ -152,8 +152,8 @@ db.boxeador.find(
 
 /*El siguiente ejemplo usa la opción . para que no distinga los acentos de una palabra. Por ejemplo: Quiero encontrar los 
 datos de Saúl Álvarez, pero no se si el nombre esta introducido con los acentos o esta en mayuscala o en minuscula*/
-db.products.find( 
-    {description: 
+db.boxeador.find( 
+    {nombre: 
         {$regex: /^Sa.l .lvarez/, $opntions: 'si'  } 
     } 
 )
@@ -165,7 +165,7 @@ db.boxeador.find({peso:{$all:
 }})
   
 /*Quiero saber si hay algun  boxeador retirado que haya ganado la WBO o algun otro que no este retirado que no la haya ganado*/
-db.inventory.find( {
+db.boxeador.find( {
     $and:[
         {añoderetiro: {gte: new Date("2008-01-01")}},
         {campeon: "WBO"},
