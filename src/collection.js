@@ -12,11 +12,11 @@ db.boxeador.insertMany([
         activo: false,
         añoderetiro: new Date("2017-08-26"),
         combatetotal: 50,
-        combates:[{
-            ganados: 49, 
-            perdidos: 1,
-            empatados: 0
-        }]
+        combates:[
+            {ganados: 49}, 
+            {perdidos: 1},
+            {empatados: 0}
+        ]
     },
 
     {nombre: "Manny Pacquio", nacionalidad: "Filipino", edad: 42, estatura: "166cm", peso: "67kg", debut: new Date("1995-01-22"), division: ["peso mosca", "peso supergallo", "peso pluma", "peso superpluma", "peso ligero", "peso superligero", "peso welter", "superwelter"], campeon: [ "CBM", "PSA", "ESPN"], activo: false, añoderetiro: new Date("2021-09-29"), combatetotal: 71, combates:[ {ganados: 62, perdidos: 8, empatados: 2 } ]}, 
